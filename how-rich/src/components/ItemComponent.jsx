@@ -15,6 +15,7 @@ function ItemComponent() {
 						<div className="item">
 							<p>{item.name}</p>
 							<p>Price {item.price}</p>
+							<p>{item.total}</p>
 							<div style={{ display: 'flex', alignItems: 'center' }}>
 								<button onClick={() => decrementQty(item.id)}>-</button>
 								<p>{item.itemQty}</p>
