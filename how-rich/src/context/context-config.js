@@ -14,6 +14,7 @@ export function Context({ children }) {
 			if (item.id === id) {
 				setDisplayQty(item.itemQty++);
 				setElonsMoney((prevState) => prevState - item.itemQty * item.price);
+				item.total = item.itemQty * item.price;
 			}
 		});
 	}
@@ -26,7 +27,7 @@ export function Context({ children }) {
 				} else {
 					setDisplayQty(item.itemQty--);
 					setElonsMoney((prevState) => prevState + item.price);
-					setTotal(item.total - item.price);
+					item.itemTotal = item.itemTotal - item.itemTotal;
 				}
 			}
 		});

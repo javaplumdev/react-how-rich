@@ -7,7 +7,7 @@ function ItemComponent() {
 
 	return (
 		<>
-			<h1>Grand Total {total}</h1>
+			<h1>Grand Total </h1>
 			<h1>Elons money {elonsMoney}</h1>
 			{items.map((item) => {
 				return (
