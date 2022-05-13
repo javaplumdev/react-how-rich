@@ -8,6 +8,7 @@ export function Context({ children }) {
 	const [itemsHolder, setItemsHolder] = useState(null);
 	const [displayQty, setDisplayQty] = useState(0);
 	const [total, setTotal] = useState(0);
+	const [grandTotal, setGrandTotal] = useState(0);
 
 	function incrementQty(id) {
 		items.map((item) => {
@@ -17,6 +18,10 @@ export function Context({ children }) {
 				item.total = item.itemQty * item.price;
 			}
 		});
+
+		setGrandTotal(
+			items.map((item) => item.total).reduce((prev, curr) => prev + curr, 0)
+		);
 	}
 
 	function decrementQty(id) {
@@ -27,10 +32,14 @@ export function Context({ children }) {
 				} else {
 					setDisplayQty(item.itemQty--);
 					setElonsMoney((prevState) => prevState + item.price);
-					item.itemTotal = item.itemTotal - item.itemTotal;
+					item.total = item.total - item.price;
 				}
 			}
 		});
+
+		setGrandTotal(
+			items.map((item) => item.total).reduce((prev, curr) => prev + curr, 0)
+		);
 	}
 
 	return (
@@ -44,6 +53,7 @@ export function Context({ children }) {
 				decrementQty,
 				elonsMoney,
 				total,
+				grandTotal,
 			}}
 		>
 			{children}

@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import { contextConfig } from '../context/context-config';
 
 function ItemComponent() {
-	const { items, elonsMoney, total } = useContext(contextConfig);
+	const { items, elonsMoney, grandTotal, total } = useContext(contextConfig);
 	const { incrementQty, decrementQty } = useContext(contextConfig);
 
 	return (
 		<>
-			<h1>Grand Total </h1>
+			<h1>Grand Total {grandTotal}</h1>
 			<h1>Elons money {elonsMoney}</h1>
 			{items.map((item) => {
 				return (
