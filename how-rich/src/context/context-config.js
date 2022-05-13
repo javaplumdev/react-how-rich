@@ -4,7 +4,7 @@ import { items } from '../data/data';
 export const contextConfig = createContext();
 
 export function Context({ children }) {
-	const [elonsMoney, setElonsMoney] = useState(10000);
+	const [elonsMoney, setElonsMoney] = useState(268000000000);
 	const [itemsHolder, setItemsHolder] = useState(null);
 	const [displayQty, setDisplayQty] = useState(0);
 	const [total, setTotal] = useState(0);
