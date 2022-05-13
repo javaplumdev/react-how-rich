@@ -12,32 +12,40 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
 function ItemComponent() {
-	const { items, elonsMoney, grandTotal, total } = useContext(contextConfig);
+	const { items, formatter } = useContext(contextConfig);
 	const { incrementQty, decrementQty } = useContext(contextConfig);
 
 	return (
 		<Container maxWidth="lg">
-			<h1>Grand Total {grandTotal}</h1>
-			<h1>Elons money {elonsMoney}</h1>
-
 			<Grid container spacing={4}>
 				{items.map((item) => {
 					return (
 						<Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
-							<div className="item-holder">
-								<Card sx={{ maxWidth: 300, padding: '.5em' }}>
+							<div className="item-holder" style={{ display: 'flex' }}>
+								<Card
+									sx={{
+										maxWidth: 300,
+										padding: '.5em',
+										boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;',
+										flex: 1,
+									}}
+								>
 									<CardMedia
 										component="img"
 										alt="green iguana"
-										height="140"
-										image="/static/images/cards/contemplative-reptile.jpg"
+										height="250"
+										image={item.productImage}
 									/>
 									<CardContent>
 										<Typography variant="h5">{item.name}</Typography>
 										<Typography>
-											$<b style={{ fontSize: '22px' }}>{item.price}</b>
+											<b style={{ fontSize: '22px' }}>
+												{formatter.format(item.price)}
+											</b>
+											<small>x{item.itemQty}</small>
+											<br></br>
+											{formatter.format(item.total)}
 										</Typography>
-										<Typography>Total: ${item.total}</Typography>
 									</CardContent>
 									<CardActions
 										style={{
@@ -49,6 +57,7 @@ function ItemComponent() {
 										<Button
 											size="small"
 											variant="contained"
+											color="error"
 											onClick={() => decrementQty(item.id)}
 										>
 											-
@@ -57,6 +66,7 @@ function ItemComponent() {
 										<Button
 											size="small"
 											variant="contained"
+											color="primary"
 											onClick={() => incrementQty(item.id)}
 										>
 											+

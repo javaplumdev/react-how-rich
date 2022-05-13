@@ -4,11 +4,16 @@ import { items } from '../data/data';
 export const contextConfig = createContext();
 
 export function Context({ children }) {
-	const [elonsMoney, setElonsMoney] = useState(268000000000);
+	const [elonsMoney, setElonsMoney] = useState(14053920000000.0);
 	const [itemsHolder, setItemsHolder] = useState(null);
 	const [displayQty, setDisplayQty] = useState(0);
 	const [total, setTotal] = useState(0);
 	const [grandTotal, setGrandTotal] = useState(0);
+
+	const formatter = new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'PHP',
+	});
 
 	function incrementQty(id) {
 		items.map((item) => {
@@ -54,6 +59,7 @@ export function Context({ children }) {
 				elonsMoney,
 				total,
 				grandTotal,
+				formatter,
 			}}
 		>
 			{children}
