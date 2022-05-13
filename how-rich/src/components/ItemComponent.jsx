@@ -25,7 +25,7 @@ function ItemComponent() {
 					return (
 						<Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
 							<div className="item-holder">
-								<Card sx={{ maxWidth: 300 }}>
+								<Card sx={{ maxWidth: 300, padding: '.5em' }}>
 									<CardMedia
 										component="img"
 										alt="green iguana"
@@ -37,7 +37,7 @@ function ItemComponent() {
 										<Typography>
 											$<b style={{ fontSize: '22px' }}>{item.price}</b>
 										</Typography>
-										<Typography>{item.total}</Typography>
+										<Typography>Total: ${item.total}</Typography>
 									</CardContent>
 									<CardActions
 										style={{
@@ -47,7 +47,7 @@ function ItemComponent() {
 										}}
 									>
 										<Button
-											size="md"
+											size="small"
 											variant="contained"
 											onClick={() => decrementQty(item.id)}
 										>
@@ -55,7 +55,7 @@ function ItemComponent() {
 										</Button>
 										<Typography>{item.itemQty}</Typography>
 										<Button
-											size="md"
+											size="small"
 											variant="contained"
 											onClick={() => incrementQty(item.id)}
 										>
