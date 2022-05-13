@@ -6,7 +6,14 @@
 	margin: 2em;
 } */
 
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
 .App {
 	font-family: 'Poppins', sans-serif;
 	overflow-x: hidden;
+	background-color: #fefae0;
 }

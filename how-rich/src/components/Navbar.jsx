@@ -1,25 +1,33 @@
 import React, { useContext } from 'react';
 import Container from '@mui/material/Container';
-
+import Grid from '@mui/material/Grid';
 import { contextConfig } from '../context/context-config';
 
 function Navbar() {
-	const { formatter, elonsMoney, grandTotal } = useContext(contextConfig);
+	const { formatter, money, grandTotal } = useContext(contextConfig);
 
 	return (
 		<div
 			style={{
-				backgroundColor: 'red',
-				borderRadius: '20px',
-				position: 'sticky',
-				top: 0,
+				position: 'fixed',
 				width: '100%',
-				padding: '.5em',
+				backgroundColor: '#3f37c9',
+				color: '#fff',
+				padding: '1em',
 			}}
 		>
-			<Container maxWidth="lg">
-				<h3>Grand Total {formatter.format(grandTotal)}</h3>
-				<h3>Elons money {formatter.format(elonsMoney)}</h3>
+			<Container
+				maxWidth="lg"
+				style={{ display: ' flex', justifyContent: 'space-around' }}
+			>
+				<Grid container>
+					<Grid item xs={12} sm={6}>
+						<small>Grand Total: </small> {formatter.format(grandTotal)}
+					</Grid>
+					<Grid item xs={12} sm={6}>
+						<small>Billionaire's networth:</small> {formatter.format(money)}
+					</Grid>
+				</Grid>
 			</Container>
 		</div>
 	);

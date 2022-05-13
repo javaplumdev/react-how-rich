@@ -16,7 +16,7 @@ function ItemComponent() {
 	const { incrementQty, decrementQty } = useContext(contextConfig);
 
 	return (
-		<Container maxWidth="lg">
+		<Container maxWidth="lg" style={{ marginTop: '5em' }}>
 			<Grid container spacing={4}>
 				{items.map((item) => {
 					return (
