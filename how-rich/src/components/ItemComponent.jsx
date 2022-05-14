@@ -12,7 +12,8 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
 function ItemComponent() {
-	const { items, formatter } = useContext(contextConfig);
+	const { items, formatter, percentSpend, grandTotal, money } =
+		useContext(contextConfig);
 	const { incrementQty, decrementQty } = useContext(contextConfig);
 
 	return (
@@ -78,6 +79,11 @@ function ItemComponent() {
 					);
 				})}
 			</Grid>
+			<div style={{ marginTop: '3em', textAlign: 'center' }}>
+				<p>The total budget you spent: {formatter.format(grandTotal)}.</p>
+				<p>Billionaire's remaining money: {formatter.format(money)}</p>
+				<p>You only spent {percentSpend}% of the total.</p>
+			</div>
 		</Container>
 	);
 }

@@ -17,3 +17,7 @@
 	overflow-x: hidden;
 	background-color: #fefae0;
 }
+
+.link {
+	text-decoration: none;
+}

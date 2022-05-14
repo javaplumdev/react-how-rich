@@ -39,7 +39,8 @@ export function Context({ children }) {
 	const [displayQty, setDisplayQty] = useState(0);
 	const [total, setTotal] = useState(0);
 	const [grandTotal, setGrandTotal] = useState(0);
-	const [id, setID] = React.useState(0);
+	const [id, setID] = useState(0);
+	const [percentSpend, setPercentSpend] = useState(0);
 
 	const formatter = new Intl.NumberFormat('en-US', {
 		style: 'currency',
@@ -61,6 +62,8 @@ export function Context({ children }) {
 			setGrandTotal(
 				items.map((item) => item.total).reduce((prev, curr) => prev + curr, 0)
 			);
+
+			setPercentSpend(parseFloat((grandTotal / money) * 100));
 		}
 	}
 
@@ -83,6 +86,8 @@ export function Context({ children }) {
 			setGrandTotal(
 				items.map((item) => item.total).reduce((prev, curr) => prev + curr, 0)
 			);
+
+			setPercentSpend(parseFloat((grandTotal / money) * 100));
 		}
 	}
 
@@ -111,6 +116,7 @@ export function Context({ children }) {
 				formatter,
 				pickAName,
 				id,
+				percentSpend,
 			}}
 		>
 			{children}
